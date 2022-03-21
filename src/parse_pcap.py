@@ -11,7 +11,8 @@ def parse(file="10122018-104Mega.pcapng"):
     print(f"Reading from {pcap_file}")
     packets = pyshark.FileCapture(pcap_file)
 
-    parsed_data = [("asdu_len", "seq_coa", "seq_cot", "io_type", "interval")]
+    parsed_data = [("asdu_len", "seq_coa", "seq_cot",
+                    "io_type", "interval")]
 
     previous = 0
     for p in packets:
@@ -49,10 +50,11 @@ def parse(file="10122018-104Mega.pcapng"):
         try:
             if asdu_layer:
                 parsed_data.append((iec_header.apdulen, asdu_layer.addr,
-                                    asdu_layer.causetx,
+                                    asdu_layer.causetx, asdu_layer.ioa,
                                     asdu_layer.typeid, interval))
             else:
-                parsed_data.append((iec_header.apdulen, -1, -1, -1, interval))
+                parsed_data.append((iec_header.apdulen, -1, -1,
+                                    -1, -1, interval))
         except:
             # Ignoring error if data can't be appended for some reasons.
             print("Error in parsing the packet")

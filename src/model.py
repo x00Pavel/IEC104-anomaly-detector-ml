@@ -12,6 +12,9 @@ if len(argv) == 2:
 
 iec104 = pd.read_csv(file, header=0, skipinitialspace=True)
 
+if "interval" in iec104.columns:
+    iec104 = iec104.drop(columns=["interval", "seq_coa"])
+print(iec104.head)
 x_train, x_test = train_test_split(iec104, train_size=2/3, test_size=1/3, shuffle=False, random_state=0)
 nu = 0.03
 one_class_svm = OneClassSVM(nu=nu, kernel = 'rbf', gamma = 0.1).fit(x_train)
