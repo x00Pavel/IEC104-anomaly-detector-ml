@@ -1,4 +1,5 @@
 from iec104Model.src.parse_pcap import parse
+import sys
 
 # Extract:
 #   Length of APDU  - Length of Application Protocol Data Unit (apdulen)
@@ -14,13 +15,13 @@ from iec104Model.src.parse_pcap import parse
 #   - can in out TCP packet be two ASDU with different element ID?
 #   - should packets with two ASDU be aggregated into one?
 
-
-# p = packets[15]
-# apdu = p["iec60870_104"]
-# asdu = p["iec60870_asdu"]
-# print(apdu.field_names)
-# print(asdu.field_names)
-# print(p["iec60870_104"])
-
 if __name__ == "__main__":
-    parse()
+    # check if CSV file exists
+    # if not -> create from given file
+    # fit the model
+    # write test prediction
+    # run 
+    if len(sys.argv) > 1:
+        parse(sys.argv[1])
+    else:
+        parse()
