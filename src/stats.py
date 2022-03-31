@@ -1,4 +1,3 @@
-from cmath import atan
 from traceback import print_tb
 import pandas as pd
 from sys import argv
@@ -16,14 +15,9 @@ chunks = []
 intervals = data["interval"]
 N = 100
 for n in range(0, len(data), N):
-    # print("N is: ", n)
-    # print(data.iloc[n:n+5])
-    # a = pd.array([i for i in data[n:n+5]])
-    # # print(a)
     chunks.append(intervals.iloc[n:n+N].mean())
 
 print(chunks)
 
 plt.plot(range(0, len(chunks)), chunks)
 plt.savefig(f"{DATA_DIR}/{basename(file)}.png")
-# plt.show()
