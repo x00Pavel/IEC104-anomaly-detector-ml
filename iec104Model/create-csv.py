@@ -1,4 +1,4 @@
-from iec104Model.src.parse_pcap import parse
+from iec104Model.parse_pcap import parse
 import sys
 
 # Extract:

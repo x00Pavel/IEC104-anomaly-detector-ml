@@ -2,14 +2,14 @@ from sklearn.svm import OneClassSVM
 from sklearn.model_selection import train_test_split
 import pandas as pd
 from joblib import dump
-from iec104Model.src import CSV, DATA_DIR
+from iec104Model import CSV, DATA_DIR
 import sys
+
 
 def create_model(num=1):
     iec104 = pd.read_csv(CSV[str(num)], header=0, skipinitialspace=True)
 
-    if "interval" in iec104.columns:
-        iec104 = iec104.drop(columns=["relative_time_stamp"])
+    iec104 = iec104.drop(columns=["relative_time_stamp"])
 
     print(iec104.head)
 
@@ -69,6 +69,7 @@ def evaluate_numbers():
     print(df.head)
 
 if __name__ == "__main__":
+    # evaluate_numbers()
     if len(sys.argv) > 1:
         create_model(sys.argv[1])
     else:

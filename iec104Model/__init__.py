@@ -1,7 +1,7 @@
-from os.path import join
+from os.path import join, dirname, realpath
 from os import getcwd
 
-DATA_DIR = join(getcwd(), "data")
+DATA_DIR = join(dirname(realpath(__file__)), "data")
 
 PCAP = {"1": join(DATA_DIR, "mega104-17-12-18.pcapng"),
         "2": join(DATA_DIR, "10122018-104Mega.pcapng"),
