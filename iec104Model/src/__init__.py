@@ -1,6 +1,7 @@
 from os.path import join
+from os import getcwd
 
-DATA_DIR = "/home/xyadlo00/studies/FIT/MITAI/1-rocnik/letni/PDS/proj/iec104Model/src/data"
+DATA_DIR = join(getcwd(), "data")
 
 PCAP = {"1": join(DATA_DIR, "mega104-17-12-18.pcapng"),
         "2": join(DATA_DIR, "10122018-104Mega.pcapng"),
