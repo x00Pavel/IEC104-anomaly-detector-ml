@@ -3,6 +3,7 @@ import pyshark
 import csv
 from traceback import print_exc
 from iec104Model import PCAP, CSV
+import concurrent.futures
 
 def parse(num=1):
     pcap_file = PCAP[str(num)]
@@ -82,7 +83,11 @@ def parse(num=1):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        parse(sys.argv[1])
-    else:
-        parse()
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        executor.map(parse, [1, 2, 3])
+
+    # if len(sys.argv) > 1:
+    #     parse(sys.argv[1])
+    # else:
+    #     parse()
